@@ -10,4 +10,10 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## First setup
 
-**[TODO 05/01/2018 @vanessa-cooper]:** _It's been a while since anyone ran a fresh copy of this repo. I think it's worth documenting the steps needed to install and run the repo on a new machine?_
+### Clone the repo
+
+1. Navigate to a local directory where you want to keep a local copy of the reposity. Run `git clone <repository_url>`
+2. Navigate to the root of the reposity and run `docker-compose up`
+3. Confirm that the backend container was started successfully by requesting _http://localhost:3000/api/ping_ in your browser or cURL
+4. Confirm the frontend container is running by navigating to _http://localhost:3001/register_ and registering a new user
+
