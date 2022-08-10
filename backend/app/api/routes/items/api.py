@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
-from app.api.routes.items import items_common, items_resource
+from app.api.routes.items import items_common
+from app.api.routes.items import items_resource
 
 router = APIRouter()
 

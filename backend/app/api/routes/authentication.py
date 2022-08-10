@@ -1,20 +1,23 @@
-from fastapi import APIRouter, Body, Depends, HTTPException
-from starlette.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
+from fastapi import APIRouter
+from fastapi import Body
+from fastapi import Depends
+from fastapi import HTTPException
+from starlette.status import HTTP_201_CREATED
+from starlette.status import HTTP_400_BAD_REQUEST
 
 from app.api.dependencies.database import get_repository
 from app.core.config import get_app_settings
 from app.core.settings.app import AppSettings
 from app.db.errors import EntityDoesNotExist
 from app.db.repositories.users import UsersRepository
-from app.models.schemas.users import (
-    UserInCreate,
-    UserInLogin,
-    UserInResponse,
-    UserWithToken,
-)
+from app.models.schemas.users import UserInCreate
+from app.models.schemas.users import UserInLogin
+from app.models.schemas.users import UserInResponse
+from app.models.schemas.users import UserWithToken
 from app.resources import strings
 from app.services import jwt
-from app.services.authentication import check_email_is_taken, check_username_is_taken
+from app.services.authentication import check_email_is_taken
+from app.services.authentication import check_username_is_taken
 from app.services.event import send_event
 
 router = APIRouter()
@@ -84,7 +87,7 @@ async def register(
         str(settings.secret_key.get_secret_value()),
     )
 
-    send_event('user_created', { 'username': user.username })
+    send_event("user_created", {"username": user.username})
 
     return UserInResponse(
         user=UserWithToken(

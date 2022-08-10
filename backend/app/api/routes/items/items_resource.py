@@ -1,29 +1,30 @@
 from typing import Optional
 
-from fastapi import APIRouter, Body, Depends, HTTPException, Response
+from fastapi import APIRouter
+from fastapi import Body
+from fastapi import Depends
+from fastapi import HTTPException
+from fastapi import Response
 from starlette import status
 
-from app.api.dependencies.items import (
-    check_item_modification_permissions,
-    get_item_by_slug_from_path,
-    get_items_filters,
-)
 from app.api.dependencies.authentication import get_current_user_authorizer
 from app.api.dependencies.database import get_repository
+from app.api.dependencies.items import check_item_modification_permissions
+from app.api.dependencies.items import get_item_by_slug_from_path
+from app.api.dependencies.items import get_items_filters
 from app.db.repositories.items import ItemsRepository
 from app.models.domain.items import Item
 from app.models.domain.users import User
-from app.models.schemas.items import (
-    ItemForResponse,
-    ItemInCreate,
-    ItemInResponse,
-    ItemInUpdate,
-    ItemsFilters,
-    ListOfItemsInResponse,
-)
+from app.models.schemas.items import ItemForResponse
+from app.models.schemas.items import ItemInCreate
+from app.models.schemas.items import ItemInResponse
+from app.models.schemas.items import ItemInUpdate
+from app.models.schemas.items import ItemsFilters
+from app.models.schemas.items import ListOfItemsInResponse
 from app.resources import strings
-from app.services.items import check_item_exists, get_slug_for_item
 from app.services.event import send_event
+from app.services.items import check_item_exists
+from app.services.items import get_slug_for_item
 
 router = APIRouter()
 
@@ -42,9 +43,7 @@ async def list_items(
         offset=items_filters.offset,
         requested_user=user,
     )
-    items_for_response = [
-        ItemForResponse.from_orm(item) for item in items
-    ]
+    items_for_response = [ItemForResponse.from_orm(item) for item in items]
     return ListOfItemsInResponse(
         items=items_for_response,
         items_count=len(items),
@@ -75,9 +74,9 @@ async def create_new_item(
         body=item_create.body,
         seller=user,
         tags=item_create.tags,
-        image=item_create.image
+        image=item_create.image,
     )
-    send_event('item_created', {'item': item_create.title})
+    send_event("item_created", {"item": item_create.title})
     return ItemInResponse(item=ItemForResponse.from_orm(item))
 
 

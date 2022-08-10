@@ -1,4 +1,6 @@
-from typing import AsyncGenerator, Callable, Type
+from typing import AsyncGenerator
+from typing import Callable
+from typing import Type
 
 from asyncpg.connection import Connection
 from asyncpg.pool import Pool

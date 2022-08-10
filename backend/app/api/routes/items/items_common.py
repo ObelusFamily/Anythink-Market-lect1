@@ -1,19 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import HTTPException
+from fastapi import Query
 from starlette import status
 
-from app.api.dependencies.items import get_item_by_slug_from_path
 from app.api.dependencies.authentication import get_current_user_authorizer
 from app.api.dependencies.database import get_repository
+from app.api.dependencies.items import get_item_by_slug_from_path
 from app.db.repositories.items import ItemsRepository
 from app.models.domain.items import Item
 from app.models.domain.users import User
-from app.models.schemas.items import (
-    DEFAULT_ITEMS_LIMIT,
-    DEFAULT_ITEMS_OFFSET,
-    ItemForResponse,
-    ItemInResponse,
-    ListOfItemsInResponse,
-)
+from app.models.schemas.items import DEFAULT_ITEMS_LIMIT
+from app.models.schemas.items import DEFAULT_ITEMS_OFFSET
+from app.models.schemas.items import ItemForResponse
+from app.models.schemas.items import ItemInResponse
+from app.models.schemas.items import ListOfItemsInResponse
 from app.resources import strings
 
 router = APIRouter()
@@ -35,9 +36,7 @@ async def get_items_for_user_feed(
         limit=limit,
         offset=offset,
     )
-    items_for_response = [
-        ItemForResponse(**item.dict()) for item in items
-    ]
+    items_for_response = [ItemForResponse(**item.dict()) for item in items]
     return ListOfItemsInResponse(
         items=items_for_response,
         items_count=len(items),

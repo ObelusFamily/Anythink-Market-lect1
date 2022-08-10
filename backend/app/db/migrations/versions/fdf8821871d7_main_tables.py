@@ -141,9 +141,7 @@ def create_items_to_tags_table() -> None:
             nullable=False,
         ),
     )
-    op.create_primary_key(
-        "pk_items_to_tags", "items_to_tags", ["item_id", "tag"]
-    )
+    op.create_primary_key("pk_items_to_tags", "items_to_tags", ["item_id", "tag"])
 
 
 def create_favorites_table() -> None:

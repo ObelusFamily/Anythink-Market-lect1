@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST
 
 from app.api.dependencies.authentication import get_current_user_authorizer

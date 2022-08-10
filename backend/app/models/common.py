@@ -1,6 +1,8 @@
 import datetime
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel
+from pydantic import Field
+from pydantic import validator
 
 
 class DateTimeModelMixin(BaseModel):

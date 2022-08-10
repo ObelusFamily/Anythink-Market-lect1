@@ -1,9 +1,13 @@
 # noqa:WPS201
-from typing import Callable, Optional
+from typing import Callable
+from typing import Optional
 
-from fastapi import Depends, HTTPException, Security
+from fastapi import Depends
+from fastapi import HTTPException
+from fastapi import Security
 from fastapi.security import APIKeyHeader
-from starlette import requests, status
+from starlette import requests
+from starlette import status
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.api.dependencies.database import get_repository

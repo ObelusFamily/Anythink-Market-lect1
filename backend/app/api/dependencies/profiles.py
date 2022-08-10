@@ -1,6 +1,8 @@
 from typing import Optional
 
-from fastapi import Depends, HTTPException, Path
+from fastapi import Depends
+from fastapi import HTTPException
+from fastapi import Path
 from starlette.status import HTTP_404_NOT_FOUND
 
 from app.api.dependencies.authentication import get_current_user_authorizer
