@@ -7,7 +7,7 @@ const ItemList = (props) => {
     return <div className="py-4 non-result">Loading...</div>;
   }
 
-  if (props.items.length === 0) {
+  if (props.searchTitle != null && props.searchTitle.length > 2 && props.items.length === 0) {
     console.log(props);
     return (
       <div id="empty" className="py-4 non-result no-items">
