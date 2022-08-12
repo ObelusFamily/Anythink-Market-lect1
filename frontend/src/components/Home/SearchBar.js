@@ -15,7 +15,6 @@ const SearchBar = (props) => {
     const title = event.target.value;
     setValue(title);
     if (title.length > 2) {
-      console.log(`search ${title}`);
       const pager = agent.Items.byTitle;
       const payload = agent.Items.byTitle(title, 0);
       props.onSearch(title, pager, payload);

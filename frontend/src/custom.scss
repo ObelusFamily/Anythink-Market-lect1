@@ -95,3 +95,12 @@ form span {
   color: black;
   border-radius: 0px 10px 10px 0px;
 }
+
+.non-result {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
