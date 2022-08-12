@@ -25,6 +25,7 @@ const SearchBar = (props) => {
   return (
     <form>
       <input
+        id="search-box"
         type="text"
         placeholder="What is it that you truly desire?"
         value={value}
